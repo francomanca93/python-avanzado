@@ -13,6 +13,8 @@
   - [Cómo organizar las carpetas de tus proyectos](#cómo-organizar-las-carpetas-de-tus-proyectos)
 - [Static Typing](#static-typing)
   - [¿Qué son los tipados?](#qué-son-los-tipados)
+    - [Clasificacion](#clasificacion)
+    - [Ejemplos de tipado](#ejemplos-de-tipado)
   - [Tipado estático en Python](#tipado-estático-en-python)
   - [Practicando el tipado estático](#practicando-el-tipado-estático)
 - [Conceptos avanzados de funciones](#conceptos-avanzados-de-funciones)
@@ -78,6 +80,69 @@ Con `tree -I venv` se puede ignorar la carpeta `venv` que tiene todos los paquet
 # Static Typing
 
 ## ¿Qué son los tipados?
+
+El tipado del lenguaje depende de cómo trata a los tipos de datos o datos primitivos.
+
+Para saber que son los tipados, tenemos que recordar que son los tipos:
+
+![tipos-primitivos](https://imgur.com/8BgNgmt.png)
+
+Los datos pueden ser **arreglos** (listas de valores), **numeros** (int o float), **strings** (cadenas de char), **booleanos** (true o false). Estos datos son llamada tipos de **datos primitivos**.
+
+### Clasificacion
+
+Entendiendo lo anterior tenemos la siguiente clasificación:
+
+- **Estático o Static**: Son los que levantan los errores de tipo en tiempo de compilación. Esto es, si al estar programando tenemos un error de tipo, entonces el lenguaje nos avisa antes de que se ejecute (mientras compila).
+
+![static](https://imgur.com/jbsa15f.png)
+
+- **Dinámico o Dynamic**: Opuesto al estático, levantan los errores de tipo en el tiempo de ejecución, es decir, el error sale mientras el programa se ejecuta en esa línea donde está el error.
+
+![dynamic](https://imgur.com/ePe21lv.png)
+
+- **Fuerte o strong**: Son los que tratan con mas severidad a los datos de diferentes tipos, por ejemplo, impide combinar un número entero con una cadena de caracteres.
+- **Débil o weak**: Los lenguajes de tipado débil tratan con menos severidad a los datos de diferentes tipos por ejemplo cambia (castea) un tipo de dato para poder operar con el, por ejemplo al sumar un número con un carácter nos entregaría una cadena que concatena ambos valores.
+
+### Ejemplos de tipado
+
+![ejemplos-tipado](https://imgur.com/hRcIpMS.png)
+
+- **Strong & Dynamic** 💪💫 : Python, Ruby, Erlang
+
+```python
+# python
+str = "Hello"
+str = 5 # No hay problema :)
+```
+
+- **Strong & Static** 💪🗻: Java, C#, Scala
+
+```java
+// java
+String str = "hello";
+str = 5; // Error
+```
+
+- **Weak & Dynamic** 😫💫 : JavaScript, PHP, Perl
+
+```js
+// javascript
+const x = 1
+const y = "2"
+const z = x + y // "12" - JS es raro 😅
+```
+
+```php
+<?php
+$str = 5 + "5"; //10 - PHP es raro 😅 (hace lo contrario a JS)
+?>
+```
+
+- **Weak & Static** 😫🗻 : C, C++
+Discucion en stackoverflow sobre este tipo de lenguajes: [Is there a statically weak typed language?](https://stackoverflow.com/questions/14046246/is-there-a-statically-weak-typed-language)
+
+> Nota: **El tipado dinámico es peligroso**.
 
 ## Tipado estático en Python
 
