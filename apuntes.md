@@ -53,6 +53,28 @@ En la carpeta __ pycache __ tenemos el bytecode que es el código intermedio que
 
 ## Cómo organizar las carpetas de tus proyectos
 
+📁 **Módulo: es cualquier archivo de Python**. Generalmente, contiene código que puedes reutilizar.
+
+🗄 **Paquete: es un conjunto de módulos**. Siempre posee el archivo __init__.py.
+
+![paquete-modulo1](https://imgur.com/xfPx20u.png)
+
+![paquete-modlo2](https://imgur.com/C9MiqBG.png)
+
+Un ejemplo de organizar los archivos de 🐍Python es de la siguiente manera:
+
+![ejemplo-organizar](https://imgur.com/MSRRiBm.png)
+
+🐍 __init __.py
+Cuando un nuevo objeto es contruido, este es inicializado por la llamada del moetodo init en el objeto. __ init __ es pronunciado **“dunder init”:** dunder es la abreviacion en ingles de **“double-underscore”**.
+
+🌳 **Comando tree**: En una terminal Unix, se puede instalar con `sudo apt-get install tree` para ver un árbol de las carpetas.
+Luego puedo ingresar a la carpeta de un proyecto y ejecutar el comando `tree`.
+
+Con `tree -I venv` se puede ignorar la carpeta `venv` que tiene todos los paquetes que se han instalado en el entorno virtual.
+
+> NOTA: Cada proyecto es diferente y a medida que vayas avanzando como ingeniero de software veremos diferentes formas de organizarlas, por ejemplo frameworks como Django, Flask o FastAPI tienen recomendacion de como ordenar las carpetas, entre otros. Pero los conceptos básicos es lo que se nombre aqui.
+
 # Static Typing
 
 ## ¿Qué son los tipados?
