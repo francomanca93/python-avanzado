@@ -397,6 +397,84 @@ Practicando el concepto de closures en [closures.py](closures.py)
 
 ## Decoradores
 
+Un decorador es una función que recibe como parámetro otra función, le añade cosas y retorna una función diferente. Tienen la misma estructura que los Closures pero en vez de variables lo que se envía es una función. Ejemplo:
+
+```py
+def decorador(func):
+    def envoltura():
+        print("Esto se añade a mi función original.")
+        func()
+    return envoltura
+
+def saludo():
+    print("¡Hola!")
+
+saludo()
+# Salida:
+# ¡Hola!
+
+saludo = decorador(saludo) # Se guarda la función decorada en la variable saludo
+saludo()                   # La función saludo está ahora decorada
+# Salida:
+# Esto se añade a mi función original.
+# ¡Hola!
+```
+
+Se puede hacer de manera mas sencilla, con **azúcar sintáctica (sugar syntax)**: Cuando tenemos un código que está embellecido para que nosotros lo veamos de una manera más estética, ayudando a entender de manera mas sencilla el código. De esta manera, tenemos el código anterior:
+
+Sin usar **sugar sintax**:
+
+```py
+def decorador(func):
+    def envoltura():
+        print("Esto se añade a mi función original.")
+        func()
+    return envoltura
+
+def saludo():
+    print("¡Hola!")
+saludo = decorador(saludo) # Se guarda la función decorada en la variable saludo (se decora)
+
+saludo() # La función saludo está ahora decorada
+```
+
+Usando **sugar sintax**:
+
+```py
+def decorador(func):
+    def envoltura():
+        print("Esto se añade a mi función original.")
+        func()
+    return envoltura
+
+# De esta manera se decora la función saludo (equivale a saludo = decorador(saludo) de la última línea, quedando ahora en la línea inmediata superior ):
+@decorador
+def saludo():
+    print("¡Hola!")
+
+saludo()                   # La función saludo está ahora decorada 
+```
+
+Esto permite ahorrar código al implementar características (decoradores) comunes a diferentes funciones:
+
+```py
+def decorator_upper(func):                  # Función decoradora
+    def wrapper(text):                      # Función anidada
+        return func(text).upper()           # Operación que realiza el decorado a la función (func), inserta el texto a la función original. Convierte todo a mayúsculas.
+    return wrapper                          # Devuelve wapper como indica la regla de los Clousures
+
+@decorator_upper                            # Decora la función message
+def message(name):
+    return f'{name}, recibiste un mensaje'  # Esto es lo que realiza la función message, previo a ser decorada.
+
+@decorator_upper                            # Decora la función warning
+def warning(name):
+    return f'Usa solo mayúsculas {name}'  # Esto es lo que realiza la función warning, previo a ser decorada.
+
+print(message("Cesar")) # Output: CESAR, RECIBISTE UN MENSAJE
+print(warning("Cesar")) # Output: USA SOLO MAYÚSCULAS CESAR
+```
+
 ## Programando decoradores
 
 # Estructuras de datos avanzadas
