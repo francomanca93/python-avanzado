@@ -7,6 +7,9 @@
 
 - [Introducción](#introducción)
   - [¿Cómo funciona Python?](#cómo-funciona-python)
+    - [Lenguajes: Compilados vs Interpretados](#lenguajes-compilados-vs-interpretados)
+    - [Garbage collector](#garbage-collector)
+    - [Carpeta _ _pycache_ _](#carpeta-_-pycache-_)
   - [Cómo organizar las carpetas de tus proyectos](#cómo-organizar-las-carpetas-de-tus-proyectos)
 - [Static Typing](#static-typing)
   - [¿Qué son los tipados?](#qué-son-los-tipados)
@@ -32,6 +35,21 @@
 # Introducción
 
 ## ¿Cómo funciona Python?
+
+### Lenguajes: Compilados vs Interpretados
+
+- Los **lenguajes compilados** convierten el código a binario que es el que lee la computadora.
+- Los **lenguajes interpretados** requieren de un programa que lee las instrucciones en tiempo real y las ejecuta, por lo que el programa interpreta el código escrito y lo traduce en lenguaje de máquina en tiempo real. Esto explicaría porque en los notebook escritos en collab o jupyter podemos ejecutar nuestro código de python por partes.
+
+![compilador-vs-interpretado](https://imgur.com/YbfsCWU.png)
+
+### Garbage collector
+
+Es una sección especial de python que se encarga de tomar los objetos y las variables que no están en uso y eliminarlas.
+
+### Carpeta _ _pycache_ _
+
+En la carpeta __ pycache __ tenemos el bytecode que es el código intermedio que crea python al ser un lenguaje interpretado para que pueda ser leido por la máquina virtual. La ventaja es que funciona como una especie de recuperacion del código que ya hemos trabajado, para que la proxima vez que se ejecute el programa sea más rápido, ya que no tiene que convertirse a bytecode de nuevo.
 
 ## Cómo organizar las carpetas de tus proyectos
 
