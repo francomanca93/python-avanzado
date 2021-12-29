@@ -231,6 +231,23 @@ El modulo `mypy` se complementa con el modulo typing ya que permitirá mostrar l
 
 ## Practicando el tipado estático
 
+Practicando el tipado estático en el archivo [palidrome.py](palindrome.py)
+
+
+El modulo mypy se complementa con el modulo typing ya que permitirá mostrar los errores de tipado débil en Python. Para revisar si algún archivo contiene errores de tipado ejecutamos en la línea de comandos lo siguiente:
+
+```shell
+mypy archivo.py --check-untyped-defs
+```
+
+Como resultado nos mostrará si existe algún error de compatibilidad de tipos.
+
+![mypy-check](https://imgur.com/CixlJKB.png)
+
+Una herramienta útil para validar código antes de subirlo a un repositorio git es [pre-commit](https://pre-commit.com/). En el siguiente enlace podemos ver mas acerca de [mypy](https://sinclert.github.io/python-types/) y en este otro enlace podemos ver como [desarrollar código limpio de Python](https://www.seraph.to/python-clean-python-code.html#python-clean-python-code)
+
+Dejo un artículo con varias reglas de pre-commit para python enlace
+
 # Conceptos avanzados de funciones
 
 ## Scope: alcance de las variables
