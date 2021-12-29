@@ -25,6 +25,7 @@
   - [Programando closures](#programando-closures)
   - [Decoradores](#decoradores)
   - [Programando decoradores](#programando-decoradores)
+    - [Entendiendo *args y **kwargs](#entendiendo-args-y-kwargs)
 - [Estructuras de datos avanzadas](#estructuras-de-datos-avanzadas)
   - [Iteradores](#iteradores)
   - [La sucesión de Fibonacci](#la-sucesión-de-fibonacci)
@@ -476,6 +477,40 @@ print(warning("Cesar")) # Output: USA SOLO MAYÚSCULAS CESAR
 ```
 
 ## Programando decoradores
+
+En el siguiente ejercicio creamos un decorador para saber cuando tarda una funcion en ejecutarse, [decorators.py](decorators.py) y en ello vimos ***args** y ****kwargs**
+
+### Entendiendo *args y **kwargs
+
+Cuando tengas que pasar argumentos a una función y no sepas cuantos, usa *args luego recorre la variable args para usarlos. **Son argumentos posicionales.**
+
+```py
+def sum(*args):
+    value = 0
+    for n in args:
+        value += n
+    return value
+```
+
+El parámetro *args recibe los argumentos como una **tupla**.
+
+Si no sabes cuantos argumentos vas a necesitar y quieres darles nombre a esas variables usarás **kwargs. **Son argumentos con nombre.**
+
+```py
+def print_values(**kwargs):
+    for key, value in kwargs.items():
+        print("The value of {} is {}".format(key, value))
+
+
+name_1="Alex",
+name_2="Gray",
+name_3="Harper",
+name_4="Phoenix",
+name_5="Remy",
+name_6="Val"
+```
+
+El parámetro **kwargs recibe los argumentos como un **diccionario**.
 
 # Estructuras de datos avanzadas
 
