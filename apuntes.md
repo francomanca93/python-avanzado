@@ -252,6 +252,82 @@ Dejo un artículo con varias reglas de pre-commit para python enlace
 
 ## Scope: alcance de las variables
 
+El **scope** es el alcance que tienen las variables. Depende de donde declares o inicialices una variable para saber si tienes acceso. **Regla de oro**:
+
+> una variable solo esta disponible dentro de la region donde fue creada
+
+- **Local Scope**: Es la región que corresponde el ámbito de una función, donde podremos tener una o mas variables, las variables van a ser accesibles únicamente en esta region y no serán visibles para otras regiones
+
+```py
+# Local Scope
+
+def my_func():
+  y = 5 #La variable solo está disponible en esta función
+  print(y)
+
+my_func() # 5
+```
+
+- **Global Scope**: Al escribir una o mas variables en esta region, estas podrán ser accesibles desde cualquier parte del código.
+
+```py
+# Global Scope
+y = 5
+
+def my_func():
+  print(y)
+
+def my_other_func():
+  print(y)
+
+my_func() # 5
+my_other_func() # 5
+```
+
+Mezclando global y local scopes, donde hay que tener en cuenta que podemos tener dos variables que se llaman igual, pero dado a que una es global y otra es local, son objetos diferentes. En la función, se le da prioridad a la variable más local.
+
+- Ejemplo 1:
+
+```py
+# global y local scopes
+
+z = 5 # global
+
+def my_func():
+  z = 3 # z local
+  print(z)
+
+my_func() # 3 - local
+
+print(z) # 5 - global
+```
+
+- Ejemplo 2:
+
+```py
+z = 5
+
+def my_func():
+  z = 3
+
+  def my_other_func():
+    z = 2
+    print(z)
+
+  my_other_func() # 2
+
+  print(z) # 3
+
+my_func()
+
+print(z) # 5
+
+# Salida:
+# > 2
+# > 3
+# > 5
+```
+
 ## Closures
 
 ## Programando closures
