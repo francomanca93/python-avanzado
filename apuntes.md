@@ -21,6 +21,7 @@
 - [Conceptos avanzados de funciones](#conceptos-avanzados-de-funciones)
   - [Scope: alcance de las variables](#scope-alcance-de-las-variables)
   - [Closures](#closures)
+    - [Reglas para encontrar un closure](#reglas-para-encontrar-un-closure)
   - [Programando closures](#programando-closures)
   - [Decoradores](#decoradores)
   - [Programando decoradores](#programando-decoradores)
@@ -329,6 +330,66 @@ print(z) # 5
 ```
 
 ## Closures
+
+Antes de ver que es un closure tenemos que saber que es una nested function.
+
+- **Nested functions**: Las funciones anidadas son simplemente funciones creadas dentro de otra función.
+
+```py
+def main():
+	a = 1
+	def nested():
+		print(a)
+	return nested
+
+my_func = main()
+my_func()
+# 1
+```
+
+- Closure: Es hacer return de una función creada dentro de otra función y luego guardar esas funciones en variables que podemos utilizar. Dicho de otra forma es es cuando una variable de un scope superior es recordada por una función de scope inferior (aunque luego se elimine la de scope superior).
+
+```py
+def main():
+	a = 1
+	def nested():
+		print(a)
+	return nested
+
+my_func = main()
+my_func()
+# 1
+del(main)
+my_func()
+# 1
+```
+
+### Reglas para encontrar un closure
+
+- Debemos tener una nested function.
+- La nested function debe referenciar un valor de un scope superior.
+- La función que envuelve a la nested function debe retornarla también.
+
+Ejemplo de closures para crear funciones:
+
+```py
+def make_multiplier(x):
+	def multiplier(n):
+		return x*n
+	return multiplier
+
+times10 = make_multiplier(10)
+times4 = make_multiplier(4)
+
+print(times10(3)) # 30
+print(times4(5)) #20
+print(times10(times4(2))) # 80
+```
+
+Los closure aparecen en dos casos particulares:
+
+- Cuando tenemos una clase corta (con un solo método), los usamos para que sean elegantes.
+- Cuando usamos decoradores.
 
 ## Programando closures
 
