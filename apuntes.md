@@ -393,6 +393,8 @@ Los closure aparecen en dos casos particulares:
 
 ## Programando closures
 
+Practicando el concepto de closures en [closures.py](closures.py)
+
 ## Decoradores
 
 ## Programando decoradores
