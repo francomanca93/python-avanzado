@@ -636,6 +636,48 @@ Un iterador es una expresión que explica con obtener el resultado de un iterabl
 
 ## La sucesión de Fibonacci
 
+En el siguiente archivo [iterators.py](iterators.py) se guarda la [sucesión de fibonacci](https://es.wikipedia.org/wiki/Sucesi%C3%B3n_de_Fibonacci) en un **iterador**. La sucesión es infinita y los recursos computacionales que tenemos son finitos (ram: 8GB, 16GB, 32GB...), por lo tanto no podemos guarda a esta sucesion en un iterable, como una lista. Por lo tanto creamos un iterador.
+
+El iterador es una clase que con tiene el metodo **iter** (creación del iterador) y el método **next** (metodo acceder a cada uno de los valores) y en el constructor **init** seteamos el numero máximo de valores que queremos extraer del iterador. Para extraerlo necesitamos un bucle, en este caso usamos el for.
+
+```py
+import time
+
+class FiboIter():
+    def __init__(self, max):
+      self.max = max
+
+    def __iter__(self):
+      self.n1 = 0
+      self.n2 = 1
+      self.counter = 0
+      return self
+
+    def __next__(self):
+      if self.counter < self.max:
+        if self.counter == 0:
+          self.counter += 1
+          return self.n1
+        elif self.counter == 1:
+          self.counter += 1
+          return self.n2
+        else:
+          self.aux = self.n1 + self.n2
+          self.n1, self.n2 = self.n2, self.aux
+          self.counter += 1
+          return self.aux
+      else:
+        print('Fin de la iteracion')
+        raise StopIteration
+
+
+if __name__ == '__main__':
+    fibonacci = FiboIter(1)
+    for element in fibonacci:
+        print(element)
+        time.sleep(1) # wait a second
+```
+
 ## Generadores
 
 ## Mejorando nuestra sucesión de Fibonacci
