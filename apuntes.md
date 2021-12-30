@@ -28,6 +28,7 @@
     - [Entendiendo *args y **kwargs](#entendiendo-args-y-kwargs)
 - [Estructuras de datos avanzadas](#estructuras-de-datos-avanzadas)
   - [Iteradores](#iteradores)
+    - [Clase con metodos iter y next - Creando un iterador](#clase-con-metodos-iter-y-next---creando-un-iterador)
   - [La sucesión de Fibonacci](#la-sucesión-de-fibonacci)
   - [Generadores](#generadores)
   - [Mejorando nuestra sucesión de Fibonacci](#mejorando-nuestra-sucesión-de-fibonacci)
@@ -515,6 +516,123 @@ El parámetro **kwargs recibe los argumentos como un **diccionario**.
 # Estructuras de datos avanzadas
 
 ## Iteradores
+
+Un iterator es una estructura de datos para guardar datos infinitos pero antes de entender qué son los **iteradores**, primero debemos entender a los **iterables**.
+
+Los **iterables** son aquellas estructuras de datos divisibles en elementos únicos que se pueden recorrer en un ciclo, por ejemplo: listas, strings, etc.
+
+Todos los iterables pueden convertirse en **iteradores** para poder ser recorridos en un ciclo.
+
+Ejemplo:
+
+```py
+# Creando un iterador
+
+my_list = [1,2,3,4,5]
+my_iter = iter(my_list)
+
+# Iterando un iterador
+
+print(next(my_iter))
+print(next(my_iter))
+print(next(my_iter))
+print(next(my_iter))
+print(next(my_iter))
+print(next(my_iter))
+
+# Cuando no quedan datos, genera un error donde la excepción StopIteration es elevada.
+
+# Salida
+
+# > 1
+# > 2
+# > 3
+# > 4
+# > 5
+# > Traceback (most recent call last):
+# >   File "UBICATION_FILE/iterators.py", line 13, in <module>
+# >     print(next(my_iter))
+# > StopIteration
+```
+
+Para solucionar lo anterior iteramos un iterador en un ciclo while:
+
+```py
+# Creando un iterador
+
+my_list = [1,2,3,4,5]
+my_iter = iter(my_list)
+
+# Iterando un iterador
+
+while True: # ciclo infinito
+  try:
+    element = next(my_iter)
+    print(element)
+  except StopIteration: # Salimos del ciclo cuando aparece la exception StopIteration
+    break
+
+# Salida
+
+# > 1
+# > 2
+# > 3
+# > 4
+# > 5
+```
+
+> **Momento impactante**: El ciclo “for” dentro de Python, no existe. Es un while con StopIteration, o sea el ciclo anterior. 🤯🤯🤯
+> El ciclo for es un **sugar sintax** del ciclo while True con las condiciones necesarias para que se comporte como el for que conocemos.
+
+```py
+my_list = [1,2,3,4,5]
+
+for element in my_list:
+  print(element)
+
+# Salida
+
+# > 1
+# > 2
+# > 3
+# > 4
+# > 5
+
+```
+
+### Clase con metodos iter y next - Creando un iterador
+
+```py
+class EvenNumbers:
+  """Clase que implementa un iterador de todos los números pares,
+  o los números pares hasta un máximo
+  """
+
+  #* Constructor de la clase
+  def __init__(self, max = None): #self hace referencia al objeto futuro que voy a crear con esta clase
+    self.max = max
+
+
+  # "El método __iter__() devuelve el objeto iterador en sí. Si es necesario, se puede realizar alguna inicialización."
+  def __iter__(self):
+    self.num = 0 #Primer número par
+    #* Convertir un iterable en un iterador
+    return self
+
+  # "El  método __next__() debe devolver el siguiente elemento de la secuencia.Al llegar al final, y  debe subir el error StopIteration."
+  def __next__(self):
+    if not self.max or self.num <= self.max:
+      result = self.num
+      self.num += 2
+      return result
+    else:
+      raise StopIteration
+```
+
+Un iterador es una expresión que explica con obtener el resultado de un iterable, esto nos trae algunas ventajas:
+
+- Nos ahorra recursos.
+- Ocupan poca memoria.
 
 ## La sucesión de Fibonacci
 
