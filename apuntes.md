@@ -42,7 +42,7 @@
   - [Eliminando los repetidos de una lista](#eliminando-los-repetidos-de-una-lista)
 - [Fechas y zonas horarias](#fechas-y-zonas-horarias)
   - [Datetime - Manejo de fechas](#datetime---manejo-de-fechas)
-- [Conclusión](#conclusión)
+  - [pytz - Time zones](#pytz---time-zones)
 
 # Introducción
 
@@ -989,7 +989,6 @@ print(f'Formato UTC: {formato_utc}')
 # > Formato UTC: 2021-12-31 12:17:41.802440
 ```
 
-Time zones
+## pytz - Time zones
 
-# Conclusión
-
+Módulo [pytz](https://pypi.org/project/pytz/) y con el trabajamos en el archivo [timezones.py](timezones.py)
