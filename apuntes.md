@@ -31,6 +31,7 @@
     - [Clase con metodos iter y next - Creando un iterador](#clase-con-metodos-iter-y-next---creando-un-iterador)
   - [La sucesión de Fibonacci](#la-sucesión-de-fibonacci)
   - [Generadores](#generadores)
+    - [Generator Expression](#generator-expression)
   - [Mejorando nuestra sucesión de Fibonacci](#mejorando-nuestra-sucesión-de-fibonacci)
   - [Sets](#sets)
   - [Operaciones con sets](#operaciones-con-sets)
@@ -679,6 +680,60 @@ if __name__ == '__main__':
 ```
 
 ## Generadores
+
+**Los Generadores son iteradores con Sugar Syntax.**
+
+Ejemplo:
+
+```py
+def my_gen():
+
+  """un ejemplo de generadores"""
+
+  print('Hello world!')
+  n = 0
+  yield n
+
+  print('Hello heaven!')
+  n = 1
+  yield n
+
+  print('Hello hell!')
+  n = 2
+  yield n
+
+
+a = my_gen()
+print(next(a)) # Hello world!
+print(next(a)) # Hello heaven!
+print(next(a)) # Hello hell!
+print(next(a)) StopIteration
+```
+
+**Yield** es lo mismo que **return**, es una palabra clave que se usa para retornar un valor de una función **pero** sin destruir los estados de las variables locales y cuando se llama a la función, la ejecución comienza desde el último yield declarado. **Toda función que contenga la palabra clave yield es denominada como un generador.**
+
+### Generator Expression
+
+Un “list comprehension” es una manera sencilla de implementar un ciclo el cual nos permite crear una nueva lista con elementos basados en los valores de una lista existente. Dicha lista creada almacena cada uno de estos nuevos valores.
+
+A diferencia de un List comprehension que puede ocupar mucha memoria pues cada valor es almacenado en la variable, un **Generator expression** solo los recorre, sin guardarlos en una lista nueva. Permite traer un elemento a la vez cuando se recorra usando un ciclo for.
+
+```py
+# Generator expression
+
+my_list = [0, 1, 4, 7, 9, 10]
+
+my_second_list = [x*2 for x in my_list] # List comprehension
+my_second_gen = (x*2 for x in my_list)  # Generator expression
+```
+
+Como se puede ver en el ejemplo, la diferencia en la sintaxis únicamente es en **el uso de paréntesis** en lugar del uso de corchetes.
+
+Ventajas de los Generadores:
+
+- Es mas fácil de escribir que un iterador
+- Ahorra Tiempo y Memoria
+- Permite guardar secuencias infinitas
 
 ## Mejorando nuestra sucesión de Fibonacci
 
