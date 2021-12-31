@@ -40,7 +40,8 @@
     - [Diferencia](#diferencia)
     - [Diferencia Simétrica](#diferencia-simétrica)
   - [Eliminando los repetidos de una lista](#eliminando-los-repetidos-de-una-lista)
-- [Bonus](#bonus)
+- [Fechas y zonas horarias](#fechas-y-zonas-horarias)
+  - [Datetime - Manejo de fechas](#datetime---manejo-de-fechas)
 - [Conclusión](#conclusión)
 
 # Introducción
@@ -922,9 +923,72 @@ La segunda opcion es mas elegante, simple y compacta gracias a tipo de dato set.
 
 En le archivo [sets.py](sets.py) hacemos uso de estas funciones para comprender que hacen lo mismo.
 
-# Bonus
+# Fechas y zonas horarias
 
-Manejo de fechas
+## Datetime - Manejo de fechas
+
+`datetime` es un módulo de manejo de fechas.
+
+```py
+import datetime
+
+my_time = datetime.datetime.now() # hora local de mi PC u hora universal
+my_date = datetime.date.today() # fecha actual
+
+my_day = datetime.date.today()
+
+print(my_time)
+print(my_date)
+
+print(f'Year: {my_day.year}')
+print(f'Month: {my_day.month}')
+print(f'Day: {my_day.day}')
+
+# Salida
+# > 2021-12-31 13:14:20.673880
+# > 2021-12-31
+# > Year: 2021
+# > Month: 12
+# > Day: 31
+```
+
+Tabla de códigos de formato para fechas y horas(**los más importantes**):
+
+| Formato | Código |
+| ------- | ------ |
+| Año     |   %Y   |
+| Mes     |   %m   |
+| Día     |   %d   |
+| Hora    |   %H   |
+| Minutos |   %M   |
+| Segundos|   %S   |
+
+```py
+from datetime import datetime
+
+my_datetime = datetime.now()
+print(my_datetime)
+
+latam = my_datetime.strftime('%d/%m/%Y')
+print(f'Formato LATAM: {latam}')
+
+usa = my_datetime.strftime('%m/%d/%Y')
+print(f'Formato USA: {usa}')
+
+random_format = my_datetime.strftime('año %Y mes %m día %d')
+print(f'Formato random: {random_format}')
+
+formato_utc = datetime.utcnow()
+print(f'Formato UTC: {formato_utc}')
+
+# Salida
+# > 2021-12-31 13:17:41.802377
+# > Formato LATAM: 31/12/2021
+# > Formato USA: 12/31/2021
+# > Formato random: año 2021 mes 12 día 31
+# > Formato UTC: 2021-12-31 12:17:41.802440
+```
+
 Time zones
 
 # Conclusión
