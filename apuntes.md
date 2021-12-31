@@ -35,6 +35,10 @@
   - [Mejorando nuestra sucesión de Fibonacci](#mejorando-nuestra-sucesión-de-fibonacci)
   - [Sets](#sets)
   - [Operaciones con sets](#operaciones-con-sets)
+    - [Unión](#unión)
+    - [Intersección](#intersección)
+    - [Diferencia](#diferencia)
+    - [Diferencia Simétrica](#diferencia-simétrica)
   - [Eliminando los repetidos de una lista](#eliminando-los-repetidos-de-una-lista)
 - [Bonus](#bonus)
 - [Conclusión](#conclusión)
@@ -838,6 +842,60 @@ print(my_set2) #Output {'hola', 1}
 ```
 
 ## Operaciones con sets
+
+![operaciones](https://imgur.com/niY3QL2.png)
+
+### Unión
+
+Es el resultado de combinar todos los elementos de los conjuntos. En caso de haber elementos repetidos, estos se eliminan. Se utiliza el operador **“pipe” ( | )** o la función `.union(<set_n>)`.
+
+```py
+set_1 = {1, 2, 3}
+set_2 = {3, 4, 5}
+set_3 = set_1 | set_2 #  -> {1, 2, 3, 4, 5}
+
+# O de forma mas explicita
+set_1.union(set_2) #  -> {1, 2, 3, 4, 5}
+```
+
+### Intersección
+
+Esta operación nos da como resultados los elementos en común de los conjuntos. Utilizamos el operador **“ampersand” ( & )** o la función `.intersection(<set_n>)`.
+
+```py
+set_1 = {1, 2, 3}
+set_2 = {3, 4, 5}
+set_3 = set_1 & set_2 #  -> {3}
+
+# O de forma mas explicita
+set_1.intersection(set_2) #  -> {3}
+```
+
+### Diferencia
+
+Nos entrega como resultado el set obtenido de eliminar de un primer set todos los elementos que comunes o que se repiten del segundo set. Se usa el operador **“menos” ( - )** o la función `.difference(<set_n>)`.
+
+```py
+set_1 = {1, 2, 3}
+set_2 = {3, 4, 5}
+set_3 = set_1 - set_2 #  -> {1, 2}
+
+# O de forma mas explicita
+set_1.difference(set_2) #  -> {1, 2}
+```
+
+### Diferencia Simétrica
+
+Es la operación opuesta a la Intersección, es decir, obtenemos todos los elementos de ambos sets, menos los que se comparten. Se usa el operador **“caret” ( ^ )** o la función `.symmetric_difference(<set_n>)`.
+
+```py
+set_1 = {1, 2, 3}
+set_2 = {3, 4, 5}
+set_3 = set_1 ^ set_2 #  -> {1, 2, 4, 5}
+
+# O de forma mas explicita
+set_1.symmetric_difference(set_2) #  -> {1, 2, 4, 5}
+```
 
 ## Eliminando los repetidos de una lista
 
