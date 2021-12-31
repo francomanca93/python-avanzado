@@ -899,6 +899,29 @@ set_1.symmetric_difference(set_2) #  -> {1, 2, 4, 5}
 
 ## Eliminando los repetidos de una lista
 
+Podemos eliminar repetidos de una lista utilizando un **bucle for**:
+
+```py
+def remove_duplicates_for(some_list):
+    without_duplicates = []
+    for item in some_list:
+        if item not in without_duplicates:
+            without_duplicates.append(item)
+    return without_duplicates
+
+```
+
+Tambien podemos eliminar repetidos de una lista utilizando **sets**:
+
+```py
+def remove_duplicates_set(some_list):
+    return list(set(some_list))
+```
+
+La segunda opcion es mas elegante, simple y compacta gracias a tipo de dato set.
+
+En le archivo [sets.py](sets.py) hacemos uso de estas funciones para comprender que hacen lo mismo.
+
 # Bonus
 
 Manejo de fechas
