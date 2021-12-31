@@ -737,6 +737,37 @@ Ventajas de los Generadores:
 
 ## Mejorando nuestra sucesión de Fibonacci
 
+En el siguiente código esta la sucesión de fibonacci utilizando generadores, sin un valor maximo como parámetro.
+
+```py
+def fibo_gen():
+    n1 = 0
+    n2 = 1
+    counter = 0
+
+    while True:
+        if counter == 0:
+            counter += 1
+            yield n1
+        elif counter == 1:
+            counter += 1
+            yield n2
+        else:
+            aux = n1 + n2
+            n1, n2 = n2, aux
+            counter += 1
+            yield aux
+
+
+if __name__ == '__main__':
+    fibonacci = fibo_gen()
+    for element in fibonacci:
+        print(element)
+        time.sleep(1)
+```
+
+En el archivo [generators.py](generators.py) tenemos la versión mejorada del código anterior con ingreso de un parámetro máximo para el generador.
+
 ## Sets
 
 ## Operaciones con sets
